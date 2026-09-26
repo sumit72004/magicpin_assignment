@@ -33,6 +33,24 @@ app = FastAPI(
 )
 
 
+@app.get("/")
+async def root():
+    """Root welcoming endpoint with links to challenge endpoints and documentation."""
+    return {
+        "service": "Vera Message Engine (magicpin AI Challenge)",
+        "status": "online",
+        "docs": "/docs",
+        "endpoints": {
+            "healthz": "/v1/healthz",
+            "metadata": "/v1/metadata",
+            "context": "/v1/context",
+            "tick": "/v1/tick",
+            "reply": "/v1/reply",
+            "teardown": "/v1/teardown"
+        }
+    }
+
+
 # =============================================================================
 # 1. HEALTHZ & METADATA ENDPOINTS
 # =============================================================================
